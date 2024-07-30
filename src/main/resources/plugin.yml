@@ -1,0 +1,8 @@
+name: MinecraftPluginTemplate
+version: '${version}'
+main: club.tesseract.minecraftplugintemplate.MinecraftPluginTemplate
+api-version: '1.21'
+load: STARTUP
+authors: [TropicalShadow]
+description: Templatable plugin for quicker development
+website: https://me.tesseract.club
