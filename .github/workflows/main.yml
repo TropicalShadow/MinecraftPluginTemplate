@@ -12,7 +12,7 @@ on:
   schedule:
     # PaperMC doesn't change version numbers for latest releases meaning the build may break
     #   unexpectedly. Build every so often so that we know if a breaking change has been published
-    - cron: '0 0 * * 7'
+    - cron: '0 0 * * 6'
   workflow_dispatch:
 
 concurrency:
