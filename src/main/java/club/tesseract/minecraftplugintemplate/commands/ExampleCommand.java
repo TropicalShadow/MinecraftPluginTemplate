@@ -8,6 +8,9 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Dependency;
 import co.aikar.commands.annotation.Subcommand;
 
+/**
+ * An example command.
+ */
 @CommandAlias("example")
 public class ExampleCommand extends BaseCommand {
 
@@ -15,7 +18,7 @@ public class ExampleCommand extends BaseCommand {
     private MinecraftPluginTemplate plugin;
 
 
-    @Subcommand("")
+    @Subcommand("default")
     @Default
     public void onDefault(CommandIssuer sender) {
         sender.sendMessage("Hello, Minecraft!");

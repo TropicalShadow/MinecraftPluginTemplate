@@ -19,7 +19,7 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
         commandManager.registerCommand(new ExampleCommand());
 
         commandManager.setDefaultExceptionHandler((command, registeredCommand, sender, args, t) -> {
-            sender.sendMessage("An error occurred while executing the command. Please check the console for more information.");
+            sender.sendMessage("An error occurred while executing the command.");
             getLogger().warning("Error occured while executing command " + command.getName());
             getLogger().severe(t.getMessage());
             return true; // mark as handled to prevent further handlers from being called.
@@ -38,7 +38,7 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
         return commandManager;
     }
 
-    public static MinecraftPluginTemplate getPlugin(){
+    public static MinecraftPluginTemplate getPlugin() {
         return MinecraftPluginTemplate.getPlugin(MinecraftPluginTemplate.class);
     }
 }
