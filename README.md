@@ -61,3 +61,7 @@ Run the following command to build the project locally:
 This will check with CodeStyle, SpotBugs, and build the project.
 
 compiled JARs can be found in `build/libs/`.
+
+---
+
+Something to finish the README.md

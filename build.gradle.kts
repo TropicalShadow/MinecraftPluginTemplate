@@ -90,6 +90,16 @@ tasks {
         minimize()
     }
 
+    register("release") {
+        dependsOn("shadowJar")
+        doFirst {
+
+            if(!version.toString().endsWith("-SNAPSHOT", true)) {
+                shadowJar.get().archiveVersion.set("")
+             }
+        }
+    }
+
     compileJava {
         options.encoding = "UTF-8"
         options.release = 21
