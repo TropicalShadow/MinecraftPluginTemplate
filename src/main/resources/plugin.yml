@@ -1,6 +1,6 @@
-name: MinecraftPluginTemplate
-version: '${version}'
-main: club.tesseract.minecraftplugintemplate.MinecraftPluginTemplate
+name: @name@
+version: @version@
+main: @package@.@name@
 api-version: '1.21'
 load: STARTUP
 authors: [TropicalShadow]

@@ -1,1 +1,1 @@
-rootProject.name = 'MinecraftPluginTemplate'
+rootProject.name = "MinecraftPluginTemplate"
