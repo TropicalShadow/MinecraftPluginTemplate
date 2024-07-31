@@ -46,6 +46,9 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://libraries.minecraft.net")
+
+    // Aikar's Repository
+    maven("https://repo.aikar.co/content/groups/aikar/")
 }
 
 dependencies {
@@ -53,6 +56,9 @@ dependencies {
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.8.6")
     implementation("io.papermc:paperlib:1.0.8")
     spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.13.0")
+
+    // Command Framework (Aikar's Command Framework)
+    implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
 }
 
 checkstyle {
@@ -87,6 +93,11 @@ tasks {
     shadowJar {
         archiveClassifier.set("")
         relocate("io.papermc.lib", "${packagelocation}.lib.paperlib")
+
+        // Aikar's Command Framework
+        relocate("co.aikar.commands", "${packagelocation}.lib.aikar.commands")
+        relocate("co.aikar.locales", "${packagelocation}.lib.aikar.locales")
+
         minimize()
     }
 
@@ -103,6 +114,10 @@ tasks {
     compileJava {
         options.encoding = "UTF-8"
         options.release = 21
+
+        // Enable below to allow the command framework to use method parameter names
+        options.compilerArgs.add("-parameters")
+        options.isFork = true
     }
 
     withType<Checkstyle>().configureEach {
