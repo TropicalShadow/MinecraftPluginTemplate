@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class MinecraftPluginTemplate extends JavaPlugin {
 
-    private static PaperCommandManager commandManager;
+    private PaperCommandManager commandManager;
 
     @Override
     public void onEnable() {
@@ -32,10 +32,6 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
         // Plugin shutdown logic
 
         this.getLogger().info("Plugin disabled!");
-    }
-
-    public static PaperCommandManager getCommandManager() {
-        return commandManager;
     }
 
     public static MinecraftPluginTemplate getPlugin() {
