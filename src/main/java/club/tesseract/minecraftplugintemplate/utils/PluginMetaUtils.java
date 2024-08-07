@@ -87,8 +87,10 @@ public final class PluginMetaUtils {
          * @return The PluginMeta object.
          */
         public static PluginMeta fromProperties(Map<String, Object> properties) {
-            Integer bstatsPluginId = Integer.parseInt((String)properties.getOrDefault("bstats_id", -1));
-            if(bstatsPluginId == -1) {
+            Integer bstatsPluginId = Integer.parseInt(
+                    (String) properties.getOrDefault("bstats_id", -1)
+            );
+            if (bstatsPluginId == -1) {
                 bstatsPluginId = null;
             }
             String pluginVersion = (String) properties.getOrDefault("plugin_version",
