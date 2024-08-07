@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -58,7 +59,9 @@ public final class PluginMetaUtils {
         } catch (IOException e) {
             MinecraftPluginTemplate.getPlugin()
                     .getLogger().warning("Failed to read plugin meta file.");
-            e.printStackTrace();
+            MinecraftPluginTemplate.getPlugin()
+                            .getLogger().log(Level.WARNING,
+                            e, () -> "Failed to read plugin meta file.");
         }
 
         return pluginMeta;
