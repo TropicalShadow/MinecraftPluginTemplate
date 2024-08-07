@@ -1,8 +1,11 @@
 package club.tesseract.minecraftplugintemplate.utils;
 
 import club.tesseract.minecraftplugintemplate.MinecraftPluginTemplate;
-import java.io.*;
-import java.net.URL;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 import org.jetbrains.annotations.Nullable;
@@ -16,23 +19,28 @@ public final class PluginMetaUtils {
     private static PluginMeta pluginMeta = null;
 
 
+    /**
+     * Get the plugin metadata, if available.
+     * If the metadata is not available, an empty metadata object is returned.
+     *
+     * @return The plugin metadata.
+     */
     public static PluginMeta getMeta() {
-        if (pluginMeta != null){
+        if (pluginMeta != null) {
             return pluginMeta;
         }
 
         pluginMeta = PluginMeta.empty();
 
-        try(
-            InputStream pluginMetaIS = MinecraftPluginTemplate.class.getResourceAsStream("plugin-meta.properties");
-        ){
+        try (InputStream pluginMetaIS = MinecraftPluginTemplate.class
+                .getResourceAsStream("plugin-meta.properties")) {
             Map<String, Object> pluginMetaData = new HashMap<>();
             if (pluginMetaIS == null) {
                 return pluginMeta;
             }
-            try(
-                BufferedReader reader = new BufferedReader(new InputStreamReader(pluginMetaIS));
-            ){
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(pluginMetaIS, Charset.defaultCharset())
+            )) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split("=");
@@ -48,23 +56,35 @@ public final class PluginMetaUtils {
 
             pluginMeta = PluginMeta.fromProperties(pluginMetaData);
         } catch (IOException e) {
-            MinecraftPluginTemplate.getPlugin().getLogger().warning("Failed to read plugin meta file.");
+            MinecraftPluginTemplate.getPlugin()
+                    .getLogger().warning("Failed to read plugin meta file.");
             e.printStackTrace();
         }
 
         return pluginMeta;
     }
 
+    /**
+     * Represents the metadata of the plugin.
+     */
     public record PluginMeta(
             String pluginName,
             String pluginVersion,
             @Nullable Integer bstatsPluginId
     ) {
 
+        /**
+         * Create a PluginMeta object from a map of properties.
+         *
+         * @param properties Map of key value pairs.
+         * @return The PluginMeta object.
+         */
         public static PluginMeta fromProperties(Map<String, Object> properties) {
             Integer bstatsPluginId = (Integer) properties.getOrDefault("bstats_id", null);
-            String pluginVersion = (String) properties.getOrDefault("plugin_version", MinecraftPluginTemplate.getPlugin().getPluginMeta().getVersion());
-            String pluginName = (String) properties.getOrDefault("plugin_name", MinecraftPluginTemplate.getPlugin().getPluginMeta().getName());
+            String pluginVersion = (String) properties.getOrDefault("plugin_version",
+                    MinecraftPluginTemplate.getPlugin().getPluginMeta().getVersion());
+            String pluginName = (String) properties.getOrDefault("plugin_name",
+                    MinecraftPluginTemplate.getPlugin().getPluginMeta().getName());
 
             return new PluginMeta(
                     pluginName,
@@ -74,6 +94,11 @@ public final class PluginMetaUtils {
 
         }
 
+        /**
+         * Create a default PluginMeta with data filled with default or null.
+         *
+         * @return The PluginMeta object.
+         */
         public static PluginMeta empty() {
             return new PluginMeta(
                     MinecraftPluginTemplate.getPlugin().getPluginMeta().getName(),

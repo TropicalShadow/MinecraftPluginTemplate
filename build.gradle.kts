@@ -61,6 +61,9 @@ dependencies {
 
     // Command Framework (Aikar's Command Framework)
     implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
+
+    // Bstats
+    implementation("org.bstats:bstats-bukkit:3.0.2")
 }
 
 checkstyle {
@@ -99,6 +102,9 @@ tasks {
         // Aikar's Command Framework
         relocate("co.aikar.commands", "${packagelocation}.lib.aikar.commands")
         relocate("co.aikar.locales", "${packagelocation}.lib.aikar.locales")
+
+        // Bstats
+        relocate("org.bstats", "${packagelocation}.lib.bstats")
 
         minimize()
     }
