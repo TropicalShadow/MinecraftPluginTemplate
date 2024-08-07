@@ -33,10 +33,14 @@ public final class PluginMetaUtils {
 
         pluginMeta = PluginMeta.empty();
 
-        try (InputStream pluginMetaIS = MinecraftPluginTemplate.class
-                .getResourceAsStream("plugin-meta.properties")) {
+
+
+        try (InputStream pluginMetaIS = MinecraftPluginTemplate.getPlugin()
+                .getResource("plugin-meta.properties")) {
             Map<String, Object> pluginMetaData = new HashMap<>();
             if (pluginMetaIS == null) {
+                MinecraftPluginTemplate.getPlugin()
+                        .getLogger().warning("Plugin meta file not found.");
                 return pluginMeta;
             }
             try (BufferedReader reader = new BufferedReader(
@@ -83,7 +87,10 @@ public final class PluginMetaUtils {
          * @return The PluginMeta object.
          */
         public static PluginMeta fromProperties(Map<String, Object> properties) {
-            Integer bstatsPluginId = (Integer) properties.getOrDefault("bstats_id", null);
+            Integer bstatsPluginId = Integer.parseInt((String)properties.getOrDefault("bstats_id", -1));
+            if(bstatsPluginId == -1) {
+                bstatsPluginId = null;
+            }
             String pluginVersion = (String) properties.getOrDefault("plugin_version",
                     MinecraftPluginTemplate.getPlugin().getPluginMeta().getVersion());
             String pluginName = (String) properties.getOrDefault("plugin_name",

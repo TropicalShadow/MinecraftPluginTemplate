@@ -12,7 +12,7 @@ plugins {
 }
 
 
-val bstats_id: Int? = null
+val bstats_id: Int? = 22930
 group = "club.tesseract"
 val packagelocation = "${group}.${project.name.lowercase()}"
 

@@ -20,6 +20,7 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
         Integer pluginId = PluginMetaUtils.getMeta().bstatsPluginId();
         if (pluginId != null) {
             new Metrics(this, pluginId);
+            getLogger().info("bStats metrics enabled!");
         }
 
         commandManager = new PaperCommandManager(this);
