@@ -11,6 +11,8 @@ plugins {
     id("java")
 }
 
+
+val bstats_id: Int? = null
 group = "club.tesseract"
 val packagelocation = "${group}.${project.name.lowercase()}"
 
@@ -138,7 +140,13 @@ tasks {
 
     processResources {
         filter<org.apache.tools.ant.filters.ReplaceTokens>("tokens" to
-                mapOf("version" to project.version, "name" to project.name, "package" to packagelocation))
+                mapOf(
+                    "version" to project.version,
+                    "name" to project.name,
+                    "package" to packagelocation,
+                    "bstats_id" to bstats_id.toString()
+                )
+        )
     }
 
     register("printProjectName") {

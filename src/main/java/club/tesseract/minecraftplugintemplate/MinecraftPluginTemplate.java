@@ -1,6 +1,8 @@
 package club.tesseract.minecraftplugintemplate;
 
 import club.tesseract.minecraftplugintemplate.commands.ExampleCommand;
+import club.tesseract.minecraftplugintemplate.metrics.Metrics;
+import club.tesseract.minecraftplugintemplate.utils.PluginMetaUtils;
 import co.aikar.commands.PaperCommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +16,11 @@ public final class MinecraftPluginTemplate extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+
+        Integer pluginId = PluginMetaUtils.getMeta().bstatsPluginId();
+        if(pluginId != null) {
+            new Metrics(this, pluginId);
+        }
 
         commandManager = new PaperCommandManager(this);
         commandManager.registerCommand(new ExampleCommand());
