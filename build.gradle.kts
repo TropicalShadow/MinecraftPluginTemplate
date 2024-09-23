@@ -63,7 +63,7 @@ dependencies {
     implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
 
     // Bstats
-    implementation("org.bstats:bstats-bukkit:3.0.2")
+    implementation("org.bstats:bstats-bukkit:3.1.0")
 }
 
 checkstyle {
