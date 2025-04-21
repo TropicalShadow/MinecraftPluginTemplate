@@ -57,7 +57,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.8.6")
     implementation("io.papermc:paperlib:1.0.8")
-    spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.13.0")
+    spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0")
 
     // Command Framework (Aikar's Command Framework)
     implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
