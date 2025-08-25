@@ -28,7 +28,7 @@ jobs:
         java: [ 21 ]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Common Setup
         uses: ./.github/actions/common-setup
@@ -65,7 +65,7 @@ jobs:
       - build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Common Setup
         uses: ./.github/actions/common-setup
@@ -100,7 +100,7 @@ jobs:
           echo "RELEASE_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Common Setup
         uses: ./.github/actions/common-setup
