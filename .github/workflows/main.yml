@@ -28,7 +28,7 @@ jobs:
         java: [ 21 ]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Common Setup
         uses: ./.github/actions/common-setup
@@ -46,7 +46,7 @@ jobs:
         run: ./gradlew assemble --info
 
       - name: Upload build results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ matrix.os }} Java ${{ matrix.java }} build results
           path: ${{ github.workspace }}/build/libs/
@@ -65,7 +65,7 @@ jobs:
       - build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Common Setup
         uses: ./.github/actions/common-setup
@@ -77,7 +77,7 @@ jobs:
 
       - name: Upload test results
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ matrix.os }} Java ${{ matrix.java }} test results
           path: ${{ github.workspace }}/build/reports/
@@ -100,7 +100,7 @@ jobs:
           echo "RELEASE_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Common Setup
         uses: ./.github/actions/common-setup

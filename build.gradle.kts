@@ -5,9 +5,9 @@ import java.util.TimeZone
 
 plugins {
     id("checkstyle")
-    id("com.github.spotbugs") version "6.2.2"
+    id("com.github.spotbugs") version "6.4.7"
     id("io.github.goooler.shadow") version "8.1.8"
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("xyz.jpenilla.run-paper") version "3.0.2"
     id("java")
 }
 
@@ -54,7 +54,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.11-pre3-R0.1-SNAPSHOT")
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.8")
     implementation("io.papermc:paperlib:1.0.8")
     spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0")
