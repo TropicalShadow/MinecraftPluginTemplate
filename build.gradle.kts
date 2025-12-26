@@ -6,7 +6,7 @@ import java.util.TimeZone
 plugins {
     id("checkstyle")
     id("com.github.spotbugs") version "6.4.8"
-    id("io.github.goooler.shadow") version "8.1.8"
+    id("com.gradleup.shadow") version "9.3.0"
     id("xyz.jpenilla.run-paper") version "3.0.2"
     id("java")
 }
@@ -78,7 +78,7 @@ configurations.checkstyle {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
 }
 
 tasks {
@@ -92,7 +92,7 @@ tasks {
     }
 
     runServer{
-        minecraftVersion("1.21")
+        minecraftVersion("1.21.11")
     }
 
     shadowJar {
@@ -121,7 +121,7 @@ tasks {
 
     compileJava {
         options.encoding = "UTF-8"
-        options.release = 21
+        options.release = 25
 
         // Enable below to allow the command framework to use method parameter names
         options.compilerArgs.add("-parameters")
