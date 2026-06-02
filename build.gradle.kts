@@ -54,7 +54,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:26.1.2.build.67-stable")
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.8")
     implementation("io.papermc:paperlib:1.0.8")
     spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0")
